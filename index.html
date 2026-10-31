@@ -4,16 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRIVATE CHAT - El Secreto es Poder</title>
+    
+    <!-- ICONO DE LA PESTAÑA (Usando tu logo real) -->
+    <link rel="icon" type="image/png" href="ChatPrivateLogo.png">
+
     <style>
         /* ESTILOS GENERALES - TEMA OSCURO PREMIUM */
         :root {
             --bg-color: #0a0a0a;
             --chat-bg: #111111;
             --chat-received: #1f1f1f;
-            --chat-sent: #005c4b; /* Verde oscuro tipo WhatsApp pero más elegante */
+            --chat-sent: #005c4b; 
             --text-main: #e0e0e0;
             --text-muted: #888888;
-            --accent: #d4af37; /* Dorado sutil para el toque de lujo/empresario */
+            --accent: #d4af37; /* Dorado sutil */
         }
 
         body {
@@ -49,10 +53,20 @@
         /* HEADER HERO */
         .hero {
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 40px 20px 40px;
             max-width: 800px;
             margin: 0 auto;
         }
+        
+        /* ESTILO PARA EL LOGO PRINCIPAL EN LA WEB */
+        .main-logo {
+            max-width: 150px; /* Ajusta el tamaño si lo ves muy grande o pequeño */
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 20px; /* Redondea las esquinas del logo */
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3); /* Un brillo elegante */
+        }
+
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
@@ -75,7 +89,7 @@
             margin-bottom: 20px;
         }
 
-        /* SIMULACIÓN DE CHAT (EL GANCHO PSICOLÓGICO) */
+        /* SIMULACIÓN DE CHAT (GANCHO PSICOLÓGICO) */
         .chat-container {
             max-width: 400px;
             margin: 0 auto 50px;
@@ -97,9 +111,13 @@
         .chat-avatar {
             width: 40px;
             height: 40px;
-            background-color: #333;
+            /* El logo también se usa como avatar en el chat */
+            background-image: url('ChatPrivateLogo.png');
+            background-size: cover;
+            background-position: center;
             border-radius: 50%;
             margin-right: 15px;
+            border: 1px solid #333;
         }
         .chat-info h3 {
             margin: 0;
@@ -114,7 +132,7 @@
 
         .chat-body {
             padding: 20px;
-            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); /* Patrón sutil */
+            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
             background-blend-mode: overlay;
             background-color: #0d0d0d;
             display: flex;
@@ -147,14 +165,12 @@
             margin-top: 5px;
         }
         
-        /* Icono de autodestrucción */
         .burn-icon {
             color: #ff4444;
             font-size: 0.8rem;
             margin-left: 5px;
         }
 
-        /* Sello de agua en la foto */
         .photo-demo {
             width: 100%;
             height: 120px;
@@ -279,6 +295,9 @@
 
     <!-- HERO SECTION -->
     <header class="hero">
+        <!-- AQUÍ ESTÁ TU LOGO PRINCIPAL -->
+        <img src="ChatPrivateLogo.png" alt="Private Chat Logo" class="main-logo">
+        
         <div class="badge" id="txt-badge">Solo para empresarios y tratos confidenciales</div>
         <h1 id="txt-title">El Secreto es Poder</h1>
         <p id="txt-desc">La mensajería definitiva para lo que no puede salir a la luz. Conversaciones que se borran, fotos con sello de traición y privacidad absoluta.</p>
@@ -339,7 +358,6 @@
     <section class="share-section">
         <h3 id="share-title">Comparte esta web (Solo con quien confíes)</h3>
         <div class="share-buttons">
-            <!-- Enlaces de compartir estándar -->
             <a href="https://twitter.com/intent/tweet?text=Estoy%20usando%20PRIVATE%20CHAT.%20El%20secreto%20es%20poder.%20Mira%20esto%3A%20URL_DE_TU_WEB" target="_blank" class="share-btn" title="Compartir en X">𝕏</a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=URL_DE_TU_WEB" target="_blank" class="share-btn" title="Compartir en Facebook">f</a>
             <a href="https://www.instagram.com/" target="_blank" class="share-btn" title="Compartir en Instagram (Copia el link)">📷</a>
@@ -476,11 +494,9 @@
         };
 
         function changeLang(lang) {
-            // Actualizar clases activas
             document.querySelectorAll('.lang-bar span').forEach(el => el.classList.remove('active'));
             document.getElementById('lang-' + lang).classList.add('active');
 
-            // Cambiar textos
             const t = translations[lang];
             document.getElementById('txt-badge').innerText = t.badge;
             document.getElementById('txt-title').innerText = t.title;
