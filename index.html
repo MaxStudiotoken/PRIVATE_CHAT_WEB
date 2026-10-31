@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRIVATE CHAT - El Secreto es Poder</title>
     
-    <!-- ICONO DE LA PESTAÑA (Usando tu logo real) -->
+    <!-- ICONO DE LA PESTAÑA -->
     <link rel="icon" type="image/png" href="ChatPrivateLogo.png">
 
     <style>
         /* ESTILOS GENERALES - TEMA OSCURO PREMIUM */
         :root {
-            --bg-color: #0a0a0a;
-            --chat-bg: #111111;
+            --bg-color: #050505;
+            --chat-bg: #0f0f0f;
             --chat-received: #1f1f1f;
-            --chat-sent: #005c4b; 
+            --chat-sent: #004d40;
             --text-main: #e0e0e0;
             --text-muted: #888888;
-            --accent: #d4af37; /* Dorado sutil */
+            --accent: #ffffff; /* El acento ahora es blanco puro para máxima elegancia */
+            --danger: #ff3333;
         }
 
         body {
@@ -36,7 +37,7 @@
             justify-content: flex-end;
             padding: 10px 20px;
             background-color: #000;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #1a1a1a;
             font-size: 0.85rem;
         }
         .lang-bar span {
@@ -46,72 +47,107 @@
             transition: color 0.3s;
         }
         .lang-bar span:hover, .lang-bar span.active {
-            color: var(--accent);
+            color: #fff;
             font-weight: bold;
         }
 
         /* HEADER HERO */
         .hero {
             text-align: center;
-            padding: 40px 20px 40px;
-            max-width: 800px;
+            padding: 60px 20px 40px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
         }
         
-        /* ESTILO PARA EL LOGO PRINCIPAL EN LA WEB */
         .main-logo {
-            max-width: 150px; /* Ajusta el tamaño si lo ves muy grande o pequeño */
+            max-width: 130px;
             height: auto;
-            margin-bottom: 20px;
-            border-radius: 20px; /* Redondea las esquinas del logo */
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3); /* Un brillo elegante */
+            margin-bottom: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1); 
+            border: 1px solid #222;
         }
 
+        /* TÍTULO GIGANTE E IMPACTANTE */
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+            font-size: 4.5rem;
+            margin: 10px 0 20px 0;
+            letter-spacing: 5px;
             text-transform: uppercase;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255,255,255,0.2), 0 0 40px rgba(255,255,255,0.1);
+            line-height: 1.1;
         }
-        .hero p {
+
+        .hero .subtitle {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
+        /* BADGE PSICOLÓGICO */
         .badge {
-            background-color: rgba(212, 175, 55, 0.1);
-            color: var(--accent);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid var(--accent);
+            background-color: transparent;
+            color: #ccc;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            border: 1px solid #333;
             display: inline-block;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* SIMULACIÓN DE CHAT (GANCHO PSICOLÓGICO) */
+        /* BOTÓN DE ACCIÓN (Psicológico) */
+        .cta-button {
+            background-color: #fff;
+            color: #000;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #fff;
+        }
+        .cta-button:hover {
+            background-color: transparent;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        /* SIMULACIÓN DE CHAT */
         .chat-container {
-            max-width: 400px;
-            margin: 0 auto 50px;
+            max-width: 420px;
+            margin: 40px auto 80px;
             background-color: var(--chat-bg);
             border-radius: 15px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
             overflow: hidden;
             border: 1px solid #222;
             position: relative;
         }
         
         .chat-header {
-            background-color: #1a1a1a;
+            background-color: #111;
             padding: 15px;
             display: flex;
             align-items: center;
             border-bottom: 1px solid #222;
         }
         .chat-avatar {
-            width: 40px;
-            height: 40px;
-            /* El logo también se usa como avatar en el chat */
+            width: 45px;
+            height: 45px;
             background-image: url('ChatPrivateLogo.png');
             background-size: cover;
             background-position: center;
@@ -121,30 +157,30 @@
         }
         .chat-info h3 {
             margin: 0;
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #fff;
         }
         .chat-info p {
             margin: 0;
             font-size: 0.75rem;
-            color: var(--accent);
+            color: #888;
         }
 
         .chat-body {
             padding: 20px;
             background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
             background-blend-mode: overlay;
-            background-color: #0d0d0d;
+            background-color: #080808;
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
         .message {
-            max-width: 80%;
-            padding: 10px 15px;
+            max-width: 85%;
+            padding: 12px 15px;
             border-radius: 10px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             position: relative;
         }
         .message.received {
@@ -169,12 +205,19 @@
             color: #ff4444;
             font-size: 0.8rem;
             margin-left: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         .photo-demo {
             width: 100%;
-            height: 120px;
-            background: linear-gradient(45deg, #333, #555);
+            height: 140px;
+            background: linear-gradient(45deg, #222, #444);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -182,54 +225,84 @@
             position: relative;
             overflow: hidden;
             margin-top: 5px;
+            border: 1px solid #333;
         }
         .photo-watermark {
             position: absolute;
-            color: rgba(255,255,255,0.3);
-            font-size: 0.7rem;
-            transform: rotate(-30deg);
+            color: rgba(255,255,255,0.15);
+            font-size: 0.8rem;
+            transform: rotate(-25deg);
             font-weight: bold;
             text-transform: uppercase;
             width: 100%;
             text-align: center;
             pointer-events: none;
+            letter-spacing: 3px;
         }
         .photo-demo::after {
-            content: '🔒 Toca para ver';
+            content: '🔒 Contenido Protegido';
             color: white;
-            font-size: 0.8rem;
-            background: rgba(0,0,0,0.6);
-            padding: 5px 10px;
+            font-size: 0.85rem;
+            background: rgba(0,0,0,0.8);
+            padding: 8px 15px;
             border-radius: 5px;
+            border: 1px solid #444;
+        }
+
+        /* TEXTO PSICOLÓGICO CENTRAL */
+        .psychology-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        .psychology-section h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .psychology-section p {
+            font-size: 1.1rem;
+            color: #aaa;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .psychology-section .highlight {
+            color: var(--danger);
+            font-weight: bold;
         }
 
         /* CARACTERÍSTICAS */
         .features {
-            max-width: 800px;
-            margin: 0 auto 60px;
+            max-width: 900px;
+            margin: 0 auto 80px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
             padding: 0 20px;
         }
         .feature-card {
-            background-color: #111;
-            padding: 25px;
-            border-radius: 10px;
-            border: 1px solid #222;
-            transition: transform 0.3s;
+            background-color: #0a0a0a;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #1a1a1a;
+            transition: all 0.3s;
         }
         .feature-card:hover {
             transform: translateY(-5px);
-            border-color: #333;
+            border-color: #444;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.05);
         }
         .feature-card h3 {
-            color: var(--accent);
+            color: #fff;
             margin-top: 0;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .feature-card p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
             margin-bottom: 0;
         }
@@ -237,36 +310,38 @@
         /* COMPARTIR REDES SOCIALES */
         .share-section {
             text-align: center;
-            padding: 40px 20px;
-            background-color: #050505;
+            padding: 50px 20px;
+            background-color: #000;
             border-top: 1px solid #111;
         }
         .share-section h3 {
             font-size: 1.2rem;
             margin-bottom: 20px;
             color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         .share-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
         }
         .share-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            background-color: #1a1a1a;
+            background-color: #111;
             color: white;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: all 0.3s;
             border: 1px solid #333;
         }
         .share-btn:hover {
-            background-color: var(--accent);
+            background-color: #fff;
             color: #000;
             transform: scale(1.1);
         }
@@ -274,10 +349,17 @@
         /* FOOTER */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             font-size: 0.8rem;
-            color: #444;
+            color: #333;
             background-color: #000;
+        }
+
+        /* RESPONSIVE PARA MOVILES */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; letter-spacing: 2px; }
+            .hero .subtitle { font-size: 1rem; }
+            .chat-container { margin: 20px auto 50px; }
         }
     </style>
 </head>
@@ -295,12 +377,15 @@
 
     <!-- HERO SECTION -->
     <header class="hero">
-        <!-- AQUÍ ESTÁ TU LOGO PRINCIPAL -->
         <img src="ChatPrivateLogo.png" alt="Private Chat Logo" class="main-logo">
         
-        <div class="badge" id="txt-badge">Solo para empresarios y tratos confidenciales</div>
-        <h1 id="txt-title">El Secreto es Poder</h1>
-        <p id="txt-desc">La mensajería definitiva para lo que no puede salir a la luz. Conversaciones que se borran, fotos con sello de traición y privacidad absoluta.</p>
+        <div class="badge" id="txt-badge">La discreción no se compra. Se impone.</div>
+        
+        <h1 id="txt-title">El Secreto<br>es Poder</h1>
+        
+        <p class="subtitle" id="txt-desc">No es solo un chat. Es un búnker digital para tus conversaciones más peligrosas. Si no quieres que se sepa, no lo escribas en otro lugar.</p>
+        
+        <a href="#descargar" class="cta-button" id="txt-cta">Solicitar Acceso Privado</a>
     </header>
 
     <!-- SIMULACIÓN DE CHAT (GANCHO PSICOLÓGICO) -->
@@ -323,7 +408,7 @@
             </div>
             <div class="message sent">
                 <div class="photo-demo">
-                    <div class="photo-watermark" id="watermark-text">ID: 8849-X | SOLO LECTURA</div>
+                    <div class="photo-watermark" id="watermark-text">ID: 8849-X | NO FOTOGRAFIAR</div>
                 </div>
                 <span class="time">10:44 <span class="burn-icon">🔥</span></span>
             </div>
@@ -334,11 +419,17 @@
         </div>
     </section>
 
+    <!-- TEXTO PSICOLÓGICO -->
+    <section class="psychology-section">
+        <h2 id="psy-title">La mayoría de las traiciones empiezan con un mensaje guardado.</h2>
+        <p id="psy-desc">WhatsApp guarda todo. Telegram no es tan privado. <span class="highlight">Aquí, las pruebas se destruyen solas.</span> Tú tienes el control. Tú decides quién sabe qué.</p>
+    </section>
+
     <!-- CARACTERÍSTICAS PSICOLÓGICAS -->
     <section class="features">
         <div class="feature-card">
             <h3 id="feat1-title">🔥 Borrado Automático</h3>
-            <p id="feat1-desc">Los mensajes desaparecen sin dejar rastro en los servidores. Ni siquiera nosotros podemos recuperarlos.</p>
+            <p id="feat1-desc">Los mensajes desaparecen sin dejar rastro en los servidores. Ni siquiera nosotros podemos recuperarlos. Si te pillan, no hay pruebas.</p>
         </div>
         <div class="feature-card">
             <h3 id="feat2-title">📸 Sello de Traición</h3>
@@ -346,17 +437,17 @@
         </div>
         <div class="feature-card">
             <h3 id="feat3-title">🚫 Bloqueo de Capturas</h3>
-            <p id="feat3-desc">Prohibido grabar o hacer capturas de pantalla. La app detecta intentos y bloquea el contenido al instante.</p>
+            <p id="feat3-desc">Prohibido grabar o hacer capturas de pantalla. La app detecta intentos y bloquea el contenido al instante. Nadie puede usar tu pantalla en tu contra.</p>
         </div>
         <div class="feature-card">
-            <h3 id="feat4-title">🕵️ Modo Infiel / Tratos</h3>
-            <p id="feat4-desc">Diseñado para quienes manejan información sensible. Sin notificaciones, sin historial, sin rastro. Solo tú y tu palabra.</p>
+            <h3 id="feat4-title">🕵️ Modo Fantasma</h3>
+            <p id="feat4-desc">Sin notificaciones. Sin historial en la nube. Si alguien toma tu teléfono, no encontrará nada. Solo tú y tu palabra.</p>
         </div>
     </section>
 
     <!-- COMPARTIR EN REDES -->
     <section class="share-section">
-        <h3 id="share-title">Comparte esta web (Solo con quien confíes)</h3>
+        <h3 id="share-title">Comparte solo con quien confíes</h3>
         <div class="share-buttons">
             <a href="https://twitter.com/intent/tweet?text=Estoy%20usando%20PRIVATE%20CHAT.%20El%20secreto%20es%20poder.%20Mira%20esto%3A%20URL_DE_TU_WEB" target="_blank" class="share-btn" title="Compartir en X">𝕏</a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=URL_DE_TU_WEB" target="_blank" class="share-btn" title="Compartir en Facebook">f</a>
@@ -372,124 +463,142 @@
     <script>
         const translations = {
             es: {
-                badge: "Solo para empresarios y tratos confidenciales",
-                title: "El Secreto es Poder",
-                desc: "La mensajería definitiva para lo que no puede salir a la luz. Conversaciones que se borran, fotos con sello de traición y privacidad absoluta.",
+                badge: "La discreción no se compra. Se impone.",
+                title: "El Secreto<br>es Poder",
+                desc: "No es solo un chat. Es un búnker digital para tus conversaciones más peligrosas. Si no quieres que se sepa, no lo escribas en otro lugar.",
+                cta: "Solicitar Acceso Privado",
                 chatName: "Contacto Confidencial",
                 chatStatus: "Cifrado de extremo a extremo • Autodestrucción activa",
                 msg1: "¿Los documentos están listos? Nadie más debe ver esto.",
                 msg2: "Listos. Te envío la foto. Recuerda que tiene un sello de identificación único.",
                 msg3: "Entendido. Si alguien más toma una foto de mi pantalla, sabré exactamente quién fue.",
-                watermark: "ID: 8849-X | SOLO LECTURA",
+                watermark: "ID: 8849-X | NO FOTOGRAFIAR",
+                psyTitle: "La mayoría de las traiciones empiezan con un mensaje guardado.",
+                psyDesc: "WhatsApp guarda todo. Telegram no es tan privado. <span class='highlight'>Aquí, las pruebas se destruyen solas.</span> Tú tienes el control. Tú decides quién sabe qué.",
                 feat1Title: "🔥 Borrado Automático",
-                feat1Desc: "Los mensajes desaparecen sin dejar rastro en los servidores. Ni siquiera nosotros podemos recuperarlos.",
+                feat1Desc: "Los mensajes desaparecen sin dejar rastro en los servidores. Ni siquiera nosotros podemos recuperarlos. Si te pillan, no hay pruebas.",
                 feat2Title: "📸 Sello de Traición",
                 feat2Desc: "Cada foto enviada lleva un sello de identificación invisible. Si alguien usa otro móvil para fotografiarla, sabrás quién te traicionó.",
                 feat3Title: "🚫 Bloqueo de Capturas",
-                feat3Desc: "Prohibido grabar o hacer capturas de pantalla. La app detecta intentos y bloquea el contenido al instante.",
-                feat4Title: "🕵️ Modo Infiel / Tratos",
-                feat4Desc: "Diseñado para quienes manejan información sensible. Sin notificaciones, sin historial, sin rastro. Solo tú y tu palabra.",
-                shareTitle: "Comparte esta web (Solo con quien confíes)"
+                feat3Desc: "Prohibido grabar o hacer capturas de pantalla. La app detecta intentos y bloquea el contenido al instante. Nadie puede usar tu pantalla en tu contra.",
+                feat4Title: "🕵️ Modo Fantasma",
+                feat4Desc: "Sin notificaciones. Sin historial en la nube. Si alguien toma tu teléfono, no encontrará nada. Solo tú y tu palabra.",
+                shareTitle: "Comparte solo con quien confíes"
             },
             en: {
-                badge: "Only for entrepreneurs and confidential deals",
-                title: "Secrecy is Power",
-                desc: "The ultimate messaging app for what cannot come to light. Self-destructing conversations, betrayal watermarks, and absolute privacy.",
+                badge: "Discretion is not bought. It is imposed.",
+                title: "Secrecy<br>is Power",
+                desc: "It's not just a chat. It's a digital bunker for your most dangerous conversations. If you don't want it known, don't write it anywhere else.",
+                cta: "Request Private Access",
                 chatName: "Confidential Contact",
                 chatStatus: "End-to-end encrypted • Self-destruct active",
                 msg1: "Are the documents ready? No one else should see this.",
                 msg2: "Ready. Sending you the photo. Remember it has a unique ID watermark.",
                 msg3: "Understood. If anyone takes a photo of my screen, I'll know exactly who it was.",
-                watermark: "ID: 8849-X | READ ONLY",
+                watermark: "ID: 8849-X | DO NOT PHOTOGRAPH",
+                psyTitle: "Most betrayals start with a saved message.",
+                psyDesc: "WhatsApp saves everything. Telegram isn't that private. <span class='highlight'>Here, the evidence destroys itself.</span> You have control. You decide who knows what.",
                 feat1Title: "🔥 Auto-Delete",
-                feat1Desc: "Messages vanish without a trace on servers. Not even we can recover them.",
+                feat1Desc: "Messages vanish without a trace on servers. Not even we can recover them. If you get caught, there's no proof.",
                 feat2Title: "📸 Betrayal Watermark",
                 feat2Desc: "Every photo sent carries an invisible ID watermark. If someone uses another phone to photograph it, you'll know who betrayed you.",
                 feat3Title: "🚫 Screenshot Block",
-                feat3Desc: "Recording or screenshots prohibited. The app detects attempts and blocks content instantly.",
-                feat4Title: "🕵️ Cheater / Deal Mode",
-                feat4Desc: "Designed for those handling sensitive info. No notifications, no history, no trace. Just you and your word.",
-                shareTitle: "Share this website (Only with those you trust)"
+                feat3Desc: "Recording or screenshots prohibited. The app detects attempts and blocks content instantly. No one can use your screen against you.",
+                feat4Title: "🕵️ Ghost Mode",
+                feat4Desc: "No notifications. No cloud history. If someone takes your phone, they'll find nothing. Just you and your word.",
+                shareTitle: "Share only with those you trust"
             },
             fr: {
-                badge: "Uniquement pour les entrepreneurs et les accords confidentiels",
-                title: "Le Secret est le Pouvoir",
-                desc: "La messagerie ultime pour ce qui ne peut pas être révélé. Conversations éphémères, filigranes de trahison et confidentialité absolue.",
+                badge: "La discrétion ne s'achète pas. Elle s'impose.",
+                title: "Le Secret<br>est le Pouvoir",
+                desc: "Ce n'est pas juste un chat. C'est un bunker numérique pour vos conversations les plus dangereuses. Si vous ne voulez pas que ça se sache, ne l'écrivez pas ailleurs.",
+                cta: "Demander l'Accès Privé",
                 chatName: "Contact Confidentiel",
                 chatStatus: "Chiffré de bout en bout • Autodestruction active",
                 msg1: "Les documents sont-ils prêts ? Personne d'autre ne doit voir ça.",
                 msg2: "Prêts. Je t'envoie la photo. Rappelle-toi qu'elle a un filigrane d'identification unique.",
                 msg3: "Compris. Si quelqu'un prend une photo de mon écran, je saurai exactement qui c'est.",
-                watermark: "ID: 8849-X | LECTURE SEULE",
+                watermark: "ID: 8849-X | NE PAS PHOTOGRAPHIER",
+                psyTitle: "La plupart des trahisons commencent par un message sauvegardé.",
+                psyDesc: "WhatsApp sauvegarde tout. Telegram n'est pas si privé. <span class='highlight'>Ici, les preuves se détruisent d'elles-mêmes.</span> Vous avez le contrôle. Vous décidez qui sait quoi.",
                 feat1Title: "🔥 Suppression Auto",
-                feat1Desc: "Les messages disparaissent sans laisser de trace. Même nous ne pouvons pas les récupérer.",
+                feat1Desc: "Les messages disparaissent sans laisser de trace. Même nous ne pouvons pas les récupérer. Si vous êtes pris, il n'y a aucune preuve.",
                 feat2Title: "📸 Filigrane de Trahison",
                 feat2Desc: "Chaque photo envoyée porte un filigrane invisible. Si quelqu'un utilise un autre téléphone pour la photographier, vous saurez qui vous a trahi.",
                 feat3Title: "🚫 Blocage de Captures",
-                feat3Desc: "Enregistrement ou captures d'écran interdits. L'application détecte les tentatives et bloque le contenu instantanément.",
-                feat4Title: "🕵️ Mode Infidèle / Accords",
-                feat4Desc: "Conçu pour ceux qui gèrent des informations sensibles. Pas de notifications, pas d'historique, pas de trace.",
-                shareTitle: "Partagez ce site (Seulement avec ceux en qui vous avez confiance)"
+                feat3Desc: "Enregistrement ou captures d'écran interdits. L'application détecte les tentatives et bloque le contenu instantanément. Personne ne peut utiliser votre écran contre vous.",
+                feat4Title: "🕵️ Mode Fantôme",
+                feat4Desc: "Pas de notifications. Pas d'historique dans le cloud. Si quelqu'un prend votre téléphone, il ne trouvera rien. Juste vous et votre parole.",
+                shareTitle: "Partagez uniquement avec ceux en qui vous avez confiance"
             },
             de: {
-                badge: "Nur für Unternehmer und vertrauliche Geschäfte",
-                title: "Geheimnis ist Macht",
-                desc: "Der ultimative Messenger für Dinge, die nicht ans Licht kommen dürfen. Selbstzerstörende Chats, Verrats-Wasserzeichen und absolute Privatsphäre.",
+                badge: "Diskretion kann man nicht kaufen. Man erzwingt sie.",
+                title: "Geheimnis<br>ist Macht",
+                desc: "Es ist nicht nur ein Chat. Es ist ein digitaler Bunker für deine gefährlichsten Gespräche. Wenn du nicht willst, dass es bekannt wird, schreib es nirgendwo anders.",
+                cta: "Privaten Zugang anfordern",
                 chatName: "Vertraulicher Kontakt",
                 chatStatus: "Ende-zu-Ende verschlüsselt • Selbstzerstörung aktiv",
                 msg1: "Sind die Dokumente fertig? Niemand sonst darf das sehen.",
                 msg2: "Fertig. Ich schicke dir das Foto. Denk dran, es hat ein eindeutiges ID-Wasserzeichen.",
                 msg3: "Verstanden. Wenn jemand ein Foto von meinem Bildschirm macht, weiß ich genau, wer es war.",
-                watermark: "ID: 8849-X | NUR LESEN",
+                watermark: "ID: 8849-X | NICHT FOTOGRAFIEREN",
+                psyTitle: "Die meisten Verrätereien beginnen mit einer gespeicherten Nachricht.",
+                psyDesc: "WhatsApp speichert alles. Telegram ist nicht so privat. <span class='highlight'>Hier zerstören sich die Beweise von selbst.</span> Du hast die Kontrolle. Du entscheidest, wer was weiß.",
                 feat1Title: "🔥 Auto-Löschung",
-                feat1Desc: "Nachrichten verschwinden spurlos. Nicht einmal wir können sie wiederherstellen.",
+                feat1Desc: "Nachrichten verschwinden spurlos. Nicht einmal wir können sie wiederherstellen. Wenn du erwischt wirst, gibt es keine Beweise.",
                 feat2Title: "📸 Verrats-Wasserzeichen",
                 feat2Desc: "Jedes gesendete Foto trägt ein unsichtbares ID-Wasserzeichen. Wenn jemand ein anderes Handy benutzt, um es zu fotografieren, weißt du, wer dich verraten hat.",
                 feat3Title: "🚫 Screenshot-Blocker",
-                feat3Desc: "Aufnehmen oder Screenshots verboten. Die App erkennt Versuche und blockiert Inhalte sofort.",
-                feat4Title: "🕵️ Fremdgeher / Deal-Modus",
-                feat4Desc: "Für diejenigen, die sensible Informationen verwalten. Keine Benachrichtigungen, keine Historie, keine Spuren.",
-                shareTitle: "Teile diese Website (Nur mit Vertrauenspersonen)"
+                feat3Desc: "Aufnehmen oder Screenshots verboten. Die App erkennt Versuche und blockiert Inhalte sofort. Niemand kann deinen Bildschirm gegen dich verwenden.",
+                feat4Title: "🕵️ Geistermodus",
+                feat4Desc: "Keine Benachrichtigungen. Keine Cloud-Historie. Wenn jemand dein Handy nimmt, findet er nichts. Nur du und dein Wort.",
+                shareTitle: "Teile nur mit denen, denen du vertraust"
             },
             it: {
-                badge: "Solo per imprenditori e accordi riservati",
-                title: "Il Segreto è Potere",
-                desc: "La messaggistica definitiva per ciò che non può venire alla luce. Conversazioni che si autodistruggono, filigrane di tradimento e privacy assoluta.",
+                badge: "La discrezione non si compra. Si impone.",
+                title: "Il Segreto<br>è Potere",
+                desc: "Non è solo una chat. È un bunker digitale per le tue conversazioni più pericolose. Se non vuoi che si sappia, non scriverlo da nessun'altra parte.",
+                cta: "Richiedi Accesso Privato",
                 chatName: "Contatto Riservato",
                 chatStatus: "Crittografato end-to-end • Autodistruzione attiva",
                 msg1: "I documenti sono pronti? Nessun altro dovrebbe vederlo.",
                 msg2: "Pronti. Ti invio la foto. Ricorda che ha una filigrana di identificazione unica.",
                 msg3: "Capito. Se qualcuno fa una foto al mio schermo, saprò esattamente chi è stato.",
-                watermark: "ID: 8849-X | SOLA LETTURA",
+                watermark: "ID: 8849-X | NON FOTOGRAFARE",
+                psyTitle: "La maggior parte dei tradimenti inizia con un messaggio salvato.",
+                psyDesc: "WhatsApp salva tutto. Telegram non è così privato. <span class='highlight'>Qui, le prove si autodistruggono.</span> Hai il controllo. Decidi tu chi sa cosa.",
                 feat1Title: "🔥 Cancellazione Automatica",
-                feat1Desc: "I messaggi svaniscono senza lasciare traccia. Nemmeno noi possiamo recuperarli.",
+                feat1Desc: "I messaggi svaniscono senza lasciare traccia. Nemmeno noi possiamo recuperarli. Se vieni scoperto, non ci sono prove.",
                 feat2Title: "📸 Filigrana di Tradimento",
                 feat2Desc: "Ogni foto inviata porta una filigrana ID invisibile. Se qualcuno usa un altro telefono per fotografarla, saprai chi ti ha tradito.",
                 feat3Title: "🚫 Blocco Screenshot",
-                feat3Desc: "Registrazione o screenshot vietati. L'app rileva i tentativi e blocca i contenuti all'istante.",
-                feat4Title: "🕵️ Modalità Infedele / Affari",
-                feat4Desc: "Progettato per chi gestisce informazioni sensibili. Niente notifiche, niente cronologia, niente tracce.",
-                shareTitle: "Condividi questo sito (Solo con chi ti fidi)"
+                feat3Desc: "Registrazione o screenshot vietati. L'app rileva i tentativi e blocca i contenuti all'istante. Nessuno può usare il tuo schermo contro di te.",
+                feat4Title: "🕵️ Modalità Fantasma",
+                feat4Desc: "Niente notifiche. Niente cronologia cloud. Se qualcuno prende il tuo telefono, non troverà nulla. Solo tu e la tua parola.",
+                shareTitle: "Condividi solo con chi ti fidi"
             },
             ru: {
-                badge: "Только для предпринимателей и конфиденциальных сделок",
-                title: "Секретность — это Власть",
-                desc: "Идеальный мессенджер для того, что не должно выйти наружу. Самоуничтожающиеся переписки, водяные знаки предательства и абсолютная приватность.",
+                badge: "Скрытность не покупают. Её навязывают.",
+                title: "Секретность<br>— это Власть",
+                desc: "Это не просто чат. Это цифровой бункер для ваших самых опасных разговоров. Если вы не хотите, чтобы об этом узнали, не пишите это где-либо еще.",
+                cta: "Запросить приватный доступ",
                 chatName: "Конфиденциальный контакт",
                 chatStatus: "Сквозное шифрование • Самоуничтожение активно",
                 msg1: "Документы готовы? Никто больше не должен это видеть.",
                 msg2: "Готовы. Отправляю фото. Помни, на нем уникальный идентификационный водяной знак.",
                 msg3: "Понял. Если кто-то сфотографирует мой экран, я точно узнаю, кто это был.",
-                watermark: "ID: 8849-X | ТОЛЬКО ЧТЕНИЕ",
+                watermark: "ID: 8849-X | НЕ ФОТОГРАФИРОВАТЬ",
+                psyTitle: "Большинство предательств начинается с сохраненного сообщения.",
+                psyDesc: "WhatsApp сохраняет всё. Telegram не так уж приватн. <span class='highlight'>Здесь доказательства уничтожают себя сами.</span> У вас есть контроль. Вы решаете, кто что знает.",
                 feat1Title: "🔥 Автоудаление",
-                feat1Desc: "Сообщения исчезают без следа. Даже мы не можем их восстановить.",
+                feat1Desc: "Сообщения исчезают без следа. Даже мы не можем их восстановить. Если вас поймают, доказательств не будет.",
                 feat2Title: "📸 Водяной знак предательства",
                 feat2Desc: "Каждое отправленное фото имеет невидимый ID-водяной знак. Если кто-то использует другой телефон, чтобы сфотографировать его, вы узнаете, кто вас предал.",
                 feat3Title: "🚫 Блокировка скриншотов",
-                feat3Desc: "Запись или скриншоты запрещены. Приложение обнаруживает попытки и мгновенно блокирует контент.",
-                feat4Title: "🕵️ Режим измены / Сделок",
-                feat4Desc: "Разработано для тех, кто работает с конфиденциальной информацией. Без уведомлений, без истории, без следов.",
-                shareTitle: "Поделиться сайтом (Только с теми, кому доверяете)"
+                feat3Desc: "Запись или скриншоты запрещены. Приложение обнаруживает попытки и мгновенно блокирует контент. Никто не может использовать ваш экран против вас.",
+                feat4Title: "🕵️ Режим призрака",
+                feat4Desc: "Никаких уведомлений. Никакой облачной истории. Если кто-то возьмет ваш телефон, он ничего не найдет. Только вы и ваше слово.",
+                shareTitle: "Делитесь только с теми, кому доверяете"
             }
         };
 
@@ -498,15 +607,23 @@
             document.getElementById('lang-' + lang).classList.add('active');
 
             const t = translations[lang];
+            // Usamos innerHTML para el título porque tiene un <br>
             document.getElementById('txt-badge').innerText = t.badge;
-            document.getElementById('txt-title').innerText = t.title;
+            document.getElementById('txt-title').innerHTML = t.title;
             document.getElementById('txt-desc').innerText = t.desc;
+            document.getElementById('txt-cta').innerText = t.cta;
+            
             document.getElementById('chat-name').innerText = t.chatName;
             document.getElementById('chat-status').innerText = t.chatStatus;
             document.getElementById('msg1').innerText = t.msg1;
             document.getElementById('msg2').innerText = t.msg2;
             document.getElementById('msg3').innerText = t.msg3;
             document.getElementById('watermark-text').innerText = t.watermark;
+            
+            // Usamos innerHTML para la descripción psicológica por el <span>
+            document.getElementById('psy-title').innerText = t.psyTitle;
+            document.getElementById('psy-desc').innerHTML = t.psyDesc;
+            
             document.getElementById('feat1-title').innerText = t.feat1Title;
             document.getElementById('feat1-desc').innerText = t.feat1Desc;
             document.getElementById('feat2-title').innerText = t.feat2Title;
